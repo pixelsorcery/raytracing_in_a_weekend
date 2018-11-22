@@ -2,12 +2,15 @@
 
 #include "ray.h"
 
+template <typename T> class material;
+
 template <typename T>
 struct hit_record_t
 {
     T t;
     vec3_t<T> p;
     vec3_t<T> normal;
+    material<T>* pMat;
 };
 
 template <typename T>

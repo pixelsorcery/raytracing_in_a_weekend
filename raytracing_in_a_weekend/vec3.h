@@ -79,14 +79,14 @@ inline vec3_t<T> operator/(const vec3_t<T>& v1, const vec3_t<T>& v2)
     return vec3_t<T>(v1.e[0] / v2.e[0], v1.e[1] / v2.e[1], v1.e[2] / v2.e[2]);
 }
 
-template<typename T>
-inline vec3_t<T> operator*(const vec3_t<T>& v, const T t)
+template<typename T, typename U>
+inline vec3_t<T> operator*(const vec3_t<T>& v, const U t)
 {
     return vec3_t<T>(v.e[0] * t, v.e[1] * t, v.e[2] * t);
 }
 
-template<typename T>
-inline vec3_t<T> operator*(const T t, const vec3_t<T>& v)
+template<typename T, typename U>
+inline vec3_t<T> operator*(const U t, const vec3_t<T>& v)
 {
     return vec3_t<T>(v.e[0] * t, v.e[1] * t, v.e[2] * t);
 }
@@ -109,6 +109,12 @@ inline vec3_t<T> cross(const vec3_t<T>& v1, const vec3_t<T>& v2)
     return vec3_t<T>((v1.e[1] * v2.e[2] - v1.e[2] * v2.e[1]),
         -(v1.e[0] * v2.e[2] - v1.e[2] * v2.e[0]),
         (v1.e[0] * v2.e[1] - v1.e[1] * v2.e[0]));
+}
+
+template<typename T>
+inline vec3_t<T> reflect(const vec3_t<T>& v, const vec3_t<T>& n)
+{
+    return v - 2*dot(v, n) * n;
 }
 
 template<typename T>
