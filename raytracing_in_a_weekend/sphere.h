@@ -30,6 +30,7 @@ bool sphere_t<T>::hit(const ray_t<T>& r, T tmin, T tmax, hit_record_t<T>& rec) c
             rec.p = r.point_at_parameter(rec.t);
             rec.normal = (rec.p - center) / radius;
             hit = true;
+            goto exit;
         }
         temp = (-b + sqrt(discriminant)) / a;
         if (temp < tmax && temp > tmin)
@@ -38,7 +39,9 @@ bool sphere_t<T>::hit(const ray_t<T>& r, T tmin, T tmax, hit_record_t<T>& rec) c
             rec.p = r.point_at_parameter(rec.t);
             rec.normal = (rec.p - center) / radius;
             hit = true;
+            goto exit;
         }
     }
+exit:
     return hit;
 }
